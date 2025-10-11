@@ -1,10 +1,23 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useChat } from "../context/ChatContext"
 import { Link, useNavigate } from "react-router-dom"
 
 export default function Chat() {
   const [msg, setMsg] = useState("")
   const [showPopup, setShowPopup] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("darkMode")
+    return saved === "true"
+  })
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode")
+    } else {
+      document.body.classList.remove("dark-mode")
+    }
+    localStorage.setItem("darkMode", darkMode)
+  }, [darkMode])
 
   // 1. Obtenemos del contexto todo lo necesario
   const { users, selectedUser, setUsers } = useChat()
@@ -62,6 +75,10 @@ export default function Chat() {
     setShowPopup(false)
   }
 
+  const handleThemeChange = (event) => {
+    setDarkMode(event.target.value === "dark")
+  }
+
   return (
     <>
       {
@@ -69,9 +86,9 @@ export default function Chat() {
           <div className="popup">
             <h2>Configuración de Chat</h2>
             <h3>Cambiar tema:</h3>
-            <select name="" id="">
-              <option value="">Claro</option>
-              <option value="">Oscuro</option>
+            <select value={darkMode ? "dark" : "light"} onChange={handleThemeChange}>
+              <option value="light">Claro</option>
+              <option value="dark">Oscuro</option>
             </select><br></br>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
