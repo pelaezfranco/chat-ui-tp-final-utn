@@ -49,15 +49,19 @@ const Login = () => {
       <h1>Clon de Whatsapp 🎉</h1>
       <form onSubmit={handleSubmit}>
         <label>Contraseña de acceso</label>
-        <input
-          placeholder="Ingrese la contraseña"
-          type={showPassword ? "text" : "password"}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <button
-          onClick={handleShowPassword}
-          type="button"><i className="fa fa-eye" aria-hidden="true"></i>
-        </button>
+        <div className="password-input-container">
+          <input
+            placeholder="Ingrese la contraseña"
+            type={showPassword ? "text" : "password"}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <button
+            onClick={handleShowPassword}
+            type="button"
+            className="toggle-password-btn">
+            <i className="fa fa-eye" aria-hidden="true"></i>
+          </button>
+        </div>
         <button>Acceder</button>
 
         {message && <p style={{ color: "green" }}>{message}</p>}
