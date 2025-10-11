@@ -62,7 +62,7 @@ const Login = () => {
             <i className="fa fa-eye" aria-hidden="true"></i>
           </button>
         </div>
-        <button>Acceder</button>
+        <button type="submit">Acceder</button>
 
         {message && <p style={{ color: "green" }}>{message}</p>}
 
