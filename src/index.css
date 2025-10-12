@@ -360,7 +360,8 @@ body.dark-mode .chat-header {
 }
 
 body.dark-mode .chat-messages {
-  background-color: #1a1a1a;
+  background-color: var(--chat-bg-color);
+  filter: brightness(0.3);
 }
 
 body.dark-mode .message {
