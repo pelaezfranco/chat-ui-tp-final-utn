@@ -1,5 +1,6 @@
 :root {
   --chat-color: #cef6ff;
+  --chat-bg-color: #fafafa;
 }
 
 * {
@@ -131,14 +132,14 @@
 .chat-messages {
   flex: 1;
   padding: 15px;
-  background-color: #fafafa;
+  background-color: var(--chat-bg-color);
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .message {
-  background-color: var(--chat-color);
+  background-color: rgb(206, 246, 255);
   padding: 5px 10px;
   border-radius: 8px;
   align-self: flex-end;

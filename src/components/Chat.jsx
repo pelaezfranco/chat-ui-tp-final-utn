@@ -10,9 +10,9 @@ export default function Chat() {
     return saved === "true"
   })
 
-  const [chatColor, setChatColor] = useState(() => {
-    const saved = localStorage.getItem("chatColor")
-    return saved || "#cef6ff"
+  const [chatBgColor, setChatBgColor] = useState(() => {
+    const saved = localStorage.getItem("chatBgColor")
+    return saved || "#fafafa"
   })
 
   useEffect(() => {
@@ -25,9 +25,9 @@ export default function Chat() {
   }, [darkMode])
 
   useEffect(() => {
-    localStorage.setItem("chatColor", chatColor)
-    document.documentElement.style.setProperty("--chat-color", chatColor)
-  }, [chatColor])
+    localStorage.setItem("chatBgColor", chatBgColor)
+    document.documentElement.style.setProperty("--chat-bg-color", chatBgColor)
+  }, [chatBgColor])
 
   // 1. Obtenemos del contexto todo lo necesario
   const { users, selectedUser, setUsers } = useChat()
@@ -90,7 +90,7 @@ export default function Chat() {
   }
 
   const handleColorChange = (event) => {
-    setChatColor(event.target.value)
+    setChatBgColor(event.target.value)
   }
 
   return (
@@ -104,14 +104,15 @@ export default function Chat() {
               <option value="light">Claro</option>
               <option value="dark">Oscuro</option>
             </select><br></br>
-            <h3>Color de mensajes:</h3>
-            <select value={chatColor} onChange={handleColorChange}>
-              <option value="#cef6ff">Azul pastel</option>
-              <option value="#ffd1dc">Rosa pastel</option>
-              <option value="#d4f1d4">Verde pastel</option>
-              <option value="#fff4cc">Amarillo pastel</option>
-              <option value="#e6d5ff">Lavanda pastel</option>
-              <option value="#ffd9b3">Melocotón pastel</option>
+            <h3>Color de fondo del chat:</h3>
+            <select value={chatBgColor} onChange={handleColorChange}>
+              <option value="#fafafa">Blanco</option>
+              <option value="#e3f2fd">Azul pastel</option>
+              <option value="#fce4ec">Rosa pastel</option>
+              <option value="#e8f5e9">Verde pastel</option>
+              <option value="#fffde7">Amarillo pastel</option>
+              <option value="#f3e5f5">Lavanda pastel</option>
+              <option value="#fff3e0">Melocotón pastel</option>
             </select><br></br>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
