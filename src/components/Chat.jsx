@@ -10,6 +10,11 @@ export default function Chat() {
     return saved === "true"
   })
 
+  const [chatColor, setChatColor] = useState(() => {
+    const saved = localStorage.getItem("chatColor")
+    return saved || "#cef6ff"
+  })
+
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark-mode")
@@ -18,6 +23,11 @@ export default function Chat() {
     }
     localStorage.setItem("darkMode", darkMode)
   }, [darkMode])
+
+  useEffect(() => {
+    localStorage.setItem("chatColor", chatColor)
+    document.documentElement.style.setProperty("--chat-color", chatColor)
+  }, [chatColor])
 
   // 1. Obtenemos del contexto todo lo necesario
   const { users, selectedUser, setUsers } = useChat()
@@ -79,6 +89,10 @@ export default function Chat() {
     setDarkMode(event.target.value === "dark")
   }
 
+  const handleColorChange = (event) => {
+    setChatColor(event.target.value)
+  }
+
   return (
     <>
       {
@@ -89,6 +103,15 @@ export default function Chat() {
             <select value={darkMode ? "dark" : "light"} onChange={handleThemeChange}>
               <option value="light">Claro</option>
               <option value="dark">Oscuro</option>
+            </select><br></br>
+            <h3>Color de mensajes:</h3>
+            <select value={chatColor} onChange={handleColorChange}>
+              <option value="#cef6ff">Azul pastel</option>
+              <option value="#ffd1dc">Rosa pastel</option>
+              <option value="#d4f1d4">Verde pastel</option>
+              <option value="#fff4cc">Amarillo pastel</option>
+              <option value="#e6d5ff">Lavanda pastel</option>
+              <option value="#ffd9b3">Melocotón pastel</option>
             </select><br></br>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
