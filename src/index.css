@@ -308,13 +308,34 @@ form .text-info {
   box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.205);
 }
 
+.popup h2,
+.popup h3 {
+  color: #333;
+}
+
+.popup select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 .popup button {
-  padding: 3px 12px;
-  background-color: rgb(136, 163, 163);
-  border: 1px solid rgb(201, 201, 201);
-  border-radius: 10px;
+  padding: 8px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
   color: white;
   margin-top: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.popup button:hover {
+  background-color: #0056b3;
 }
 
 /* Dark Mode */
