@@ -1,33 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useChat } from "../context/ChatContext"
 import { Link, useNavigate } from "react-router-dom"
 
 export default function Chat() {
   const [msg, setMsg] = useState("")
   const [showPopup, setShowPopup] = useState(false)
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("darkMode")
-    return saved === "true"
-  })
-
-  const [chatBgColor, setChatBgColor] = useState(() => {
-    const saved = localStorage.getItem("chatBgColor")
-    return saved || "#fafafa"
-  })
-
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode")
-    } else {
-      document.body.classList.remove("dark-mode")
-    }
-    localStorage.setItem("darkMode", darkMode)
-  }, [darkMode])
-
-  useEffect(() => {
-    localStorage.setItem("chatBgColor", chatBgColor)
-    document.documentElement.style.setProperty("--chat-bg-color", chatBgColor)
-  }, [chatBgColor])
 
   // 1. Obtenemos del contexto todo lo necesario
   const { users, selectedUser, setUsers } = useChat()
@@ -85,41 +62,17 @@ export default function Chat() {
     setShowPopup(false)
   }
 
-  const handleThemeChange = (event) => {
-    setDarkMode(event.target.value === "dark")
-  }
-
-  const handleColorChange = (event) => {
-    setChatBgColor(event.target.value)
-  }
-
   return (
     <>
       {
         showPopup === true && <section className="cont-popup">
           <div className="popup">
             <h2>Configuración de Chat</h2>
-            <div className="popup-options">
-              <div className="popup-option">
-                <h3>Cambiar tema:</h3>
-                <select value={darkMode ? "dark" : "light"} onChange={handleThemeChange}>
-                  <option value="light">Claro</option>
-                  <option value="dark">Oscuro</option>
-                </select>
-              </div>
-              <div className="popup-option">
-                <h3>Color de fondo del chat:</h3>
-                <select value={chatBgColor} onChange={handleColorChange}>
-                  <option value="#fafafa">Blanco</option>
-                  <option value="#e3f2fd">Azul pastel</option>
-                  <option value="#fce4ec">Rosa pastel</option>
-                  <option value="#e8f5e9">Verde pastel</option>
-                  <option value="#fffde7">Amarillo pastel</option>
-                  <option value="#f3e5f5">Lavanda pastel</option>
-                  <option value="#fff3e0">Melocotón pastel</option>
-                </select>
-              </div>
-            </div>
+            <h3>Cambiar tema:</h3>
+            <select name="" id="">
+              <option value="">Claro</option>
+              <option value="">Oscuro</option>
+            </select><br></br>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
         </section>
