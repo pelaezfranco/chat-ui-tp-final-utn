@@ -126,10 +126,6 @@
 }
 
 .chat-messages {
-  background-color: violet;
-}
-
-.chat-messages {
   flex: 1;
   padding: 15px;
   background-color: var(--chat-bg-color);
