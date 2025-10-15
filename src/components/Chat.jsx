@@ -99,21 +99,27 @@ export default function Chat() {
         showPopup === true && <section className="cont-popup">
           <div className="popup">
             <h2>Configuración de Chat</h2>
-            <h3>Cambiar tema:</h3>
-            <select value={darkMode ? "dark" : "light"} onChange={handleThemeChange}>
-              <option value="light">Claro</option>
-              <option value="dark">Oscuro</option>
-            </select><br></br>
-            <h3>Color de fondo del chat:</h3>
-            <select value={chatBgColor} onChange={handleColorChange}>
-              <option value="#fafafa">Blanco</option>
-              <option value="#e3f2fd">Azul pastel</option>
-              <option value="#fce4ec">Rosa pastel</option>
-              <option value="#e8f5e9">Verde pastel</option>
-              <option value="#fffde7">Amarillo pastel</option>
-              <option value="#f3e5f5">Lavanda pastel</option>
-              <option value="#fff3e0">Melocotón pastel</option>
-            </select><br></br>
+            <div className="popup-options">
+              <div className="popup-option">
+                <h3>Cambiar tema:</h3>
+                <select value={darkMode ? "dark" : "light"} onChange={handleThemeChange}>
+                  <option value="light">Claro</option>
+                  <option value="dark">Oscuro</option>
+                </select>
+              </div>
+              <div className="popup-option">
+                <h3>Color de fondo del chat:</h3>
+                <select value={chatBgColor} onChange={handleColorChange}>
+                  <option value="#fafafa">Blanco</option>
+                  <option value="#e3f2fd">Azul pastel</option>
+                  <option value="#fce4ec">Rosa pastel</option>
+                  <option value="#e8f5e9">Verde pastel</option>
+                  <option value="#fffde7">Amarillo pastel</option>
+                  <option value="#f3e5f5">Lavanda pastel</option>
+                  <option value="#fff3e0">Melocotón pastel</option>
+                </select>
+              </div>
+            </div>
             <button onClick={handleClosePopup}>Cerrar</button>
           </div>
         </section>
