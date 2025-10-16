@@ -72,11 +72,6 @@ export default function Chat() {
     setMsg("")
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn")
-    navigate("/")
-  }
-
   const handleShowPopup = () => {
     setShowPopup(true)
   }
@@ -143,7 +138,6 @@ export default function Chat() {
             <button title="Gallery">🖼️</button>
             <button title="Settings" onClick={handleShowPopup}>⚙️</button>
             <Link to="/help" title="Help">❓</Link>
-            <button onClick={handleLogout}>Cerrar sesión</button>
           </div>
         </header>
 

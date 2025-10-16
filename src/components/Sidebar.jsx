@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react"
 import { useChat } from "../context/ChatContext"
+import { useNavigate } from "react-router-dom"
 
 export default function Sidebar() {
   const { users, setSelectedUser } = useChat()
   const [usersToRender, setUsersToRender] = useState(users)
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn")
+    navigate("/")
+  }
 
   // 🔄 Cada vez que cambien los usuarios globales, actualizamos la lista a renderizar
   useEffect(() => {
@@ -63,6 +70,7 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
+      <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
     </div>
   )
 }
